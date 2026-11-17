@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poziv na spoj 💖</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ff9eb5,#ff6b8a,#ff4d6d);
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+}
+
+.container{
+width:90%;
+max-width:700px;
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(12px);
+padding:40px;
+border-radius:25px;
+text-align:center;
+color:white;
+}
+
+.slide{
+display:none;
+}
+
+.slide.active{
+display:block;
+animation:fade .4s ease;
+}
+
+@keyframes fade{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+button{
+padding:14px 28px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+margin:8px;
+font-size:16px;
+font-weight:bold;
+}
+
+.nextBtn{
+background:white;
+color:#ff4d6d;
+}
+
+.yes{
+background:#67ff81;
+}
+
+.no{
+background:#ff5e5e;
+color:white;
+}
+
+textarea,
+input{
+width:100%;
+padding:12px;
+border:none;
+border-radius:15px;
+margin-top:15px;
+}
+
+.hearts{
+position:fixed;
+inset:0;
+pointer-events:none;
+}
+
+.heart{
+position:absolute;
+font-size:25px;
+animation:float 8s linear infinite;
+}
+
+@keyframes float{
+from{
+transform:translateY(100vh);
+}
+to{
+transform:translateY(-20vh);
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="hearts" id="hearts"></div>
+
+<div class="container">
+
+<div class="slide active" id="s1">
+<h1>Hiiiiiiii, MINĆIIIIIII! ☺️☺️☺️☺️</h1>
+<button class="nextBtn" onclick="next('s2')">Dalje ❤️</button>
+</div>
+
+<div class="slide" id="s2">
+<h1>Htio bih da te nešto pitam... ☺️☺️</h1>
+<button class="nextBtn" onclick="next('s3')">Nastavi 💕</button>
+</div>
+
+<div class="slide" id="s3">
+<h1>Da li bi željela na izlazak samnom? 💖</h1>
+
+<button class="yes" onclick="next('yes1')">
+DA 😍
+</button>
+
+<button class="no" onclick="next('really')">
+NE 😢
+</button>
+</div>
+
+<div class="slide" id="really">
+
+<h1>Ozbiljno? 😭</h1>
+
+<div style="font-size:70px;">
+😭😭💔😭😭
+</div>
+
+<button class="yes" onclick="next('sure')">
+DA 😭
+</button>
+
+<button class="no" onclick="next('joke')">
+NE ❤️
+</button>
+
+</div>
+
+<div class="slide" id="sure">
+
+<h1>Baš sigurna? 🥺💔</h1>
+
+<div style="font-size:70px;">
+😭😭😭😭😭
+</div>
+
+<button class="yes" onclick="next('no1')">
+DA 😭
+</button>
+
+<button class="no" onclick="next('joke')">
+NE ❤️
+</button>
+
+</div>
+
+<div class="slide" id="joke">
+
+<h1>😂😂😂</h1>
+
+<h2>Hahahahaha, baš me voliš trzati! ❤️</h2>
+
+<div style="font-size:70px;">
+😂🤣😂🤣😂
+</div>
+
+<button class="nextBtn" onclick="next('s3')">
+Dalje ❤️
+</button>
+
+</div>
+
+<div class="slide" id="no1">
+
+<h1>Zašto ne? 🥺</h1>
+
+<textarea
+id="reason"
+rows="5"
+placeholder="Molim te reci mi razlog..."></textarea>
+
+<button class="nextBtn"
+onclick="continueAfterReason()">
+Nastavi
+</button>
+
+</div>
+
+<div class="slide" id="yes1">
+
+<h1>Jeeee! ☺️☺️☺️☺️</h1>
+
+<h2>Kada bismo mogli izaći? 💕</h2>
+
+<input type="date">
+
+<br><br>
+
+<button class="nextBtn" onclick="next('time')">
+Ti izaberi za nas ❤️
+</button>
+
+<button class="nextBtn" onclick="next('time')">
+Nastavi 💖
+</button>
+
+</div>
+
+<div class="slide" id="time">
+
+<h1>U koliko sati da se nađemo? ⏰</h1>
+
+<input type="time">
+
+<button class="nextBtn" onclick="showRange()">
+Ti odluči ❤️
+</button>
+
+<div id="rangeBox" style="display:none;">
+
+<p>Kada si slobodna?</p>
+
+<input
+type="text"
+placeholder="Primjer: 17:00 - 22:00">
+
+</div>
+
+<br>
+
+<button class="nextBtn" onclick="next('place')">
+Nastavi 💕
+</button>
+
+</div>
+
+<div class="slide" id="place">
+
+<h1>Gdje bi željela da idemo? 🌹</h1>
+
+<div style="text-align:left;">
+
+<label><input type="checkbox"> MEZZ</label><br>
+<label><input type="checkbox"> MARLI</label><br>
+<label><input type="checkbox"> VEMA</label><br>
+<label><input type="checkbox"> NAŠA KUĆA</label><br>
+<label><input type="checkbox"> HAREM</label><br>
+<label><input type="checkbox"> SOUND </label><br>
+
+</div>
+
+<br>
+
+<button class="nextBtn" onclick="next('final')">
+Ja ću izabrati ❤️
+</button>
+
+<button class="nextBtn" onclick="next('final')">
+Nastavi 💖
+</button>
+
+</div>
+
+<div class="slide" id="final">
+
+<h1>💖 Jedva čekam naš izlazak! 💖</h1>
+
+<h2>😘 Vidimo se uskoro, ljepotice!</h2>
+
+</div>
+
+<div class="slide" id="sorry">
+
+<h1>💔 Žao mi je što sam pitao.</h1>
+
+<br>
+
+<h2>🌹 Neću te više smarati.</h2>
+
+<br>
+
+<p>Hvala ti što si bila iskrena.</p>
+
+<br>
+
+<p>😊 Bez ljutnje.</p>
+
+<br>
+
+<h2>❤️ Kraj.</h2>
+
+</div>
+
+</div>
+
+<script>
+
+function next(id){
+document.querySelectorAll('.slide').forEach(
+slide=>slide.classList.remove('active')
+);
+
+document.getElementById(id)
+.classList.add('active');
+}
+
+function continueAfterReason(){
+
+let reason =
+document.getElementById('reason').value.trim();
+
+if(reason===""){
+alert("Molim te prvo napiši razlog 🥺");
+return;
+}
+
+next('sorry');
+}
+
+function showRange(){
+document.getElementById('rangeBox').style.display='block';
+}
+
+function createHeart(){
+
+const heart=document.createElement('div');
+
+heart.className='heart';
+heart.innerHTML='💖';
+
+heart.style.left=Math.random()*100+'%';
+heart.style.fontSize=(20+Math.random()*30)+'px';
+
+document
+.getElementById('hearts')
+.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},8000);
+}
+
+setInterval(createHeart,300);
+
+</script>
+
+</body>
+</html>
